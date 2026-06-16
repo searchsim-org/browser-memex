@@ -1,55 +1,79 @@
 # BrowserMemex
 
-Browser extension. Ready to install. Chrome and Firefox builds in one place.
+![BrowserMemex](chrome/icons/icon-128.png)
 
-## What's here
+Prebuilt browser extension for [BrowserMemex](https://browsermemex.com).
+Chrome and Firefox in one place. Load it without building anything.
+
+The source, build scripts, and release tooling live in a separate
+development repository. This repository carries only the ready-to-load
+builds and a short installation guide.
+
+| Artefact | Reference |
+|---|---|
+| Website | <https://browsermemex.com> |
+| Marketing repo | <https://github.com/searchsim-org/browsermemex-website> |
+
+---
+
+## Repository layout
 
 ```
-chrome/   ← unpacked Chrome build, load this folder
-firefox/  ← unpacked Firefox build, load manifest.json from this folder
-browser-memex-chrome.zip   ← same Chrome build, zipped
-browser-memex-firefox.zip  ← same Firefox build, zipped
+bm-plugin/
+├── chrome/                       Unpacked Chrome (MV3) build. Load this
+│                                 folder via chrome://extensions.
+├── firefox/                      Unpacked Firefox (MV3) build. Load
+│                                 firefox/manifest.json via
+│                                 about:debugging.
+├── browser-memex-chrome.zip      Same Chrome build, zipped. Use this for
+│                                 the Chrome Web Store submission.
+├── browser-memex-firefox.zip     Same Firefox build, zipped. Use this
+│                                 for the Mozilla Add-on submission.
+└── README.md
 ```
 
 ## Install in Chrome
 
-1. Open `chrome://extensions` in a new tab.
-2. Turn on Developer mode (toggle in the top right).
+1. Open `chrome://extensions`.
+2. Enable Developer mode (top-right toggle).
 3. Click "Load unpacked".
-4. Pick the `chrome/` folder from this repo.
+4. Select the `chrome/` folder from this repository.
 
-You should see a BM icon in the toolbar. Click it to open the side panel.
+The BrowserMemex icon appears in the toolbar. Click it to open the side
+panel.
 
 ## Install in Firefox
 
 1. Open `about:debugging#/runtime/this-firefox`.
 2. Click "Load Temporary Add-on...".
-3. Pick `firefox/manifest.json` from this repo.
+3. Select `firefox/manifest.json` from this repository.
 
-You should see a BM icon in the toolbar. The sidebar opens with View > Sidebar > BrowserMemex, or just click the toolbar icon.
+The BrowserMemex icon appears in the toolbar. Open the sidebar with
+View > Sidebar > BrowserMemex, or click the toolbar icon.
 
-Firefox forgets temporary add-ons when you restart it. To keep it installed, use the signed `.xpi` once it's on Add-ons Mozilla.
+Firefox removes temporary add-ons when the browser restarts. A signed
+`.xpi` will be published on Mozilla Add-ons once review is complete.
 
-## First time setup
+## First-time setup
 
-1. Open the side panel.
-2. Pick a name for your workspace when prompted (or skip and keep the default).
-3. Open the Agents tab.
-4. Pick the AI you use. Copy the config snippet into that AI's MCP settings. Restart it.
-5. The new tools (memex_memory_query, memex_skills_run, etc.) show up.
+1. Open the side panel. Pick a workspace name when prompted, or keep the
+   default.
+2. Open the Agents tab.
+3. Pick the AI you use. Copy the displayed configuration snippet into
+   that AI's MCP settings. Restart it.
+4. The new tools (`memex_memory_query`, `memex_skills_run`,
+   `memex_tasks_create`, and so on) appear in that AI.
 
-## What it does
+All memory, schedules, and skills are stored on your computer. Nothing
+is uploaded.
 
-One workspace your AIs share. Memory, saved tasks, schedules. Switch from Claude Code to Cursor to whatever ships next, the workspace stays.
+## Reporting issues
 
-Everything is on your computer. Nothing gets uploaded.
+Open an issue on this repository with:
 
-## Where to file bugs
-
-Open an issue here. Include:
-
-- Which browser, which version.
-- What you clicked.
-- What you expected.
-- What you got. (A screenshot helps.)
-- Anything in the console (right click the side panel > Inspect > Console).
+- Browser and version.
+- The steps you took.
+- What you expected to happen.
+- What happened instead.
+- Console output from the side panel (right-click > Inspect > Console)
+  if anything errored.
