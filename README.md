@@ -1,6 +1,6 @@
 # BrowserMemex
 
-![BrowserMemex](chrome/icons/icon-128.png)
+![BrowserMemex](media/browsermemex.png)
 
 Prebuilt browser extension for [BrowserMemex](https://browsermemex.com).
 Chrome and Firefox in one place. Load it without building anything.
