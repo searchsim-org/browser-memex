@@ -1,0 +1,331 @@
+:root {
+  --qa-bg: #ffffff;
+  --qa-text: #18181b;
+  --qa-muted: #71717a;
+  --qa-border: #e4e4e7;
+  --qa-row-hover: #f4f4f5;
+  --qa-accent: #18181b;
+  --qa-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --qa-error: #b91c1c;
+  --qa-success: #047857;
+}
+[data-theme="dark"] {
+  --qa-bg: #1f1f23;
+  --qa-text: #f4f4f5;
+  --qa-muted: #a1a1aa;
+  --qa-border: #3f3f46;
+  --qa-row-hover: #2a2a30;
+  --qa-accent: #f4f4f5;
+  --qa-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --qa-error: #fca5a5;
+  --qa-success: #6ee7b7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--qa-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 13px;
+  width: 340px;
+}
+
+#popup-root {
+  padding: 10px;
+}
+
+.qa-popup {
+  background: var(--qa-bg);
+  border: 1px solid var(--qa-border);
+  border-radius: 12px;
+  box-shadow: var(--qa-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- header ----- */
+.qa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 8px;
+}
+.qa-header__left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.qa-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: block;
+}
+.qa-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: var(--qa-text);
+}
+.qa-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--qa-muted);
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.qa-icon-btn:hover {
+  color: var(--qa-text);
+  background: var(--qa-row-hover);
+}
+
+/* ----- banner ----- */
+.qa-banner {
+  font-size: 12px;
+  color: var(--qa-muted);
+  padding: 6px 14px 0;
+  line-height: 1.4;
+}
+
+/* ----- list ----- */
+.qa-list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px 6px 8px;
+}
+.qa-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--qa-text);
+  user-select: none;
+}
+.qa-item:hover {
+  background: var(--qa-row-hover);
+}
+.qa-item__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.qa-item__plus {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--qa-muted);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.qa-item__name {
+  flex: 1;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.qa-item--new .qa-item__name {
+  color: var(--qa-muted);
+}
+.qa-item--new:hover .qa-item__name {
+  color: var(--qa-text);
+}
+.qa-item__menu {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--qa-muted);
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+.qa-item:hover .qa-item__menu {
+  opacity: 1;
+}
+.qa-item__menu:hover {
+  color: var(--qa-text);
+  background: var(--qa-border);
+}
+.qa-item__run {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--qa-muted);
+  font-size: 11px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+.qa-item:hover .qa-item__run {
+  opacity: 1;
+}
+.qa-item__run:hover {
+  color: #ffffff;
+  background: var(--qa-accent);
+}
+.qa-item__run:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ----- composer ----- */
+.qa-composer {
+  padding: 8px 12px 12px;
+  border-top: 1px solid var(--qa-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#qa-input {
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--qa-border);
+  border-radius: 6px;
+  background: var(--qa-bg);
+  color: var(--qa-text);
+  resize: vertical;
+  min-height: 60px;
+  outline: none;
+}
+#qa-input:focus {
+  border-color: var(--qa-accent);
+}
+.qa-composer__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.qa-btn {
+  padding: 5px 12px;
+  border: 1px solid var(--qa-border);
+  border-radius: 6px;
+  background: var(--qa-bg);
+  color: var(--qa-text);
+  font-size: 12px;
+  cursor: pointer;
+}
+.qa-btn:hover {
+  background: var(--qa-row-hover);
+}
+.qa-btn--primary {
+  background: var(--qa-accent);
+  color: var(--qa-bg);
+  border-color: var(--qa-accent);
+}
+.qa-btn--primary:hover {
+  opacity: 0.9;
+  background: var(--qa-accent);
+}
+.qa-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.qa-status {
+  font-size: 11px;
+  color: var(--qa-muted);
+  min-height: 1.2em;
+}
+.qa-status--error {
+  color: var(--qa-error);
+}
+.qa-status--success {
+  color: var(--qa-success);
+}
+.qa-status--loading {
+  color: var(--qa-muted);
+}
+
+/* ----- footer ----- */
+.qa-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-top: 1px solid var(--qa-border);
+}
+.qa-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.qa-user__avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--qa-row-hover);
+  color: var(--qa-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid var(--qa-border);
+}
+.qa-user__name {
+  font-size: 12px;
+  color: var(--qa-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+.qa-brand {
+  font-size: 11px;
+  color: var(--qa-muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ----- loading state ----- */
+.qa-loading {
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--qa-muted);
+}
