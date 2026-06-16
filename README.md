@@ -12,7 +12,6 @@ builds and a short installation guide.
 | Artefact | Reference |
 |---|---|
 | Website | <https://browsermemex.com> |
-| Marketing repo | <https://github.com/searchsim-org/browsermemex-website> |
 
 ---
 
